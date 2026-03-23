@@ -30,9 +30,10 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "client/build")));
 
 
-app.get("/*", (req, res) => {
+app.get('/:path(*)', (req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
+
 
 
 app.use(ErrorHandler);
