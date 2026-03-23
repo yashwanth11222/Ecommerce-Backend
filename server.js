@@ -15,7 +15,7 @@ connectDb();
 
 app.use(cors({
     origin: process.env.CLIENT_URL,
-    methods:["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 
@@ -26,8 +26,18 @@ app.use('/category', productRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "client/build")));
+
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
+
+
 app.use(ErrorHandler);
 
-app.listen(Port, ()=>{
+app.listen(Port, () => {
     console.log('server is running!', Port)
 })
