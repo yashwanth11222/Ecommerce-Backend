@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 require('dotenv').config();
 const Port = process.env.PORT || 3000
@@ -26,13 +27,12 @@ app.use('/category', productRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 
-// const path = require("path");
-// app.use(express.static(path.join(__dirname, "client/dist")));
+app.use(express.static(path.join(__dirname, "client/dist")));
 
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, "client/dist", "index.html"));
-// });
+app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+});
 
 
 
