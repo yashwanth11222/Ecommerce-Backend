@@ -26,13 +26,13 @@ app.use('/category', productRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 
-const path = require("path");
-app.use(express.static(path.join(__dirname, "client/dist")));
+// const path = require("path");
+// app.use(express.static(path.join(__dirname, "client/dist")));
 
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+// });
 
 
 
