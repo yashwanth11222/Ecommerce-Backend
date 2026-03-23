@@ -27,11 +27,11 @@ app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 
 const path = require("path");
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/dist")));
 
 
-app.get('/:path*', (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
 });
 
 
